@@ -11,17 +11,18 @@ import './less/index.less'
 //NAV-LİNK(NAVBAR)--mouseover--preventdefault
 const navBar=document.querySelectorAll(".nav-link");
 navBar.forEach((item)=>{
-item.addEventListener("mouseover", (event)=> {
+item.addEventListener("click", (event)=> {
     event.target.style.color="yellow";
+    event.preventDefault();
 
     setTimeout(()=> {
         event.target.style.color="";
     }, 1000)
 })
-item.addEventListener("click",(e)=>{
+/*item.addEventListener("click",(e)=>{
     alert("You stuck here!!!");
     //e.preventDefault();
-})
+})*/
 
 });
 
@@ -30,7 +31,7 @@ const btn=document.querySelectorAll(".btn")
 
 btn.forEach((item)=>{
    
-    item.addEventListener("dblclick", (evt)=>{
+    item.addEventListener("mouseover", (evt)=>{
         evt.target.style.color="red"
         evt.preventDefault();
         })
@@ -44,7 +45,7 @@ foot.addEventListener("mouseleave", (event)=> {
 
 const imgBus=document.querySelectorAll("img");
 imgBus.forEach((e)=>{
-e.addEventListener("click", (event)=>{
+e.addEventListener("dblclick", (event)=>{
     event.target.style.filter="grayscale(100%)"
 
     
@@ -66,17 +67,3 @@ el.addEventListener("scroll", (event) => {
     }, 1000);
   });
  
-
-  function allowDrop(ev) {
-    ev.preventDefault();
-  }
-
-  function drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.drag1);
-  }
-
-  function drop(ev) {
-    ev.preventDefault();
-    var data = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementById(data));
-  }
